@@ -1,1 +1,275 @@
-HELLO
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>DANIEL KRISTOFFER</title>
+	</head>
+	<link rel='stylesheet' type='text/css' href='reset.css'>
+	<link rel='stylesheet' type='text/css' href='default.css'>
+		<script type='text/javascript'>
+			window.onload = function() {
+				window.scrollTo(0,0);
+			}
+		</script>
+	<body>
+		<div id='overlay-black'></div>
+		<div id='skeleton'>
+			<div class='section'><a name='cover'></a></div>
+			<div class='section'><a name='folio-1'></a></div>
+			<div class='section'><a name='folio-2'></a></div>
+			<div class='section'><a name='folio-3'></a></div>
+			<div class='section'><a name='folio-4'></a></div>
+		</div>
+		<div id='cover' class='panel'>
+			<div class='panel-container'>
+				<div id='logo'>LOGO</div>
+				<div id='my-name'>DANIEL KRISTOFFER</div>
+			</div>
+		</div>
+		<div id='folio' class='panel'>
+			<div id='0' class='panel-container current'>
+				<div class='folio-title'>INFORMATION MONSTER</div>
+				<div class='content'>
+					<div class='left'>
+						<div class='screenshot'>
+							<img src='screenshot/informationmonster.png'>
+						</div>
+					</div>
+					<div class='right'>
+						<div class='work-badges'>
+							<div class='badge design'></div>
+							<div class='badge dev'></div>
+							<div class='badge idea'></div>
+							<div class='more'></div>
+						</div>
+						<div class='comments'>
+							Client: Computer Society of the Ateneo
+							<br><br>
+							Information Monster is a web system that focuses on 3 key member related functionalities - (1) Registration, (2) Activity Tracking, and (3) Rewards and Achievements.
+							<br><br>
+							Different departments in the organization track different types of success indicators but basically stem from the same datasource which is member activity tracking. The project started off as an enhancemet of the already then developed Member Registration System which grew to a bigger project - now the Information Monster.
+						</div>
+					</div>
+					<div style='clearfix: both'></div>
+				</div>
+			</div>
+			<div id='1' class='panel-container next right'>
+				<div class='folio-title'>COMPANY OF ATENEO DANCERS</div>
+				<div class='content'>
+					<div class='left'>
+						<div class='screenshot'>
+							<img src='screenshot/cads.png'>
+						</div>
+					</div>
+					<div class='right'>
+						<div class='work-badges'>
+							<div class='badge dev'></div>
+							<div class='more'></div>
+						</div>
+						<div class='comments'>
+							Client: Company of Ateneo Dancers
+							<br><br>
+							The Company of Ateneo Dancers website is a site designed by the organization's creatives team. The site functions as an informative site but has a unique functionality - a booking system. Furthermore, the site tries to feature the on-going event/competition of the organization by incorporating these entries with Google Maps.
+							<br><br>
+							The site is built using Drupal with highly customized themes and functionalities.
+						</div>
+					</div>
+					<div style='clearfix: both'></div>
+				</div>
+			</div>
+			<div id='2' class='panel-container right'>
+				<div class='folio-title'>KAYA NATIN</div>
+				<div class='content'>
+					<div class='left'>
+						<div class='screenshot'>
+							<img src='screenshot/kayanatin.png'>
+						</div>
+					</div>
+					<div class='right'>
+						<div class='work-badges'>
+							<div class='badge dev'></div>
+							<div class='more'></div>
+						</div>
+						<div class='comments'>
+							Client: Kaya Natin (via Works of Heart)
+							<br><br>
+							The Kaya Natin website is a website developed on behalf of Works of Heart. The site is built using Wordpress. Notable features include a header slider, a featured section and page/content categorization.
+						</div>
+					</div>
+					<div style='clearfix: both'></div>
+				</div>
+			</div>
+			<div id='3' class='panel-container right'>
+				<div class='folio-title'>PHOENIX TRANSITION ANALYTICS</div>
+				<div class='content'>
+					<div class='left'>
+						<div class='screenshot'>
+							<img src='screenshot/pta.png'>
+						</div>
+					</div>
+					<div class='right'>
+						<div class='work-badges'>
+							<div class='badge design'></div>
+							<div class='badge dev'></div>
+							<div class='badge idea'></div>
+							<div class='more'></div>
+						</div>
+						<div class='comments'>
+							Client: Hewlett-Packard
+							<br><br>
+							PTA is an internal web system for our team in Hewlett-Packard. The system is similar to a Project Management System but incorporates key performance indicators based on the team where the system is being implemented. It shows a high level view of the different projects handled by the organization, status and key contacts.
+							<br><br>
+							The system has a front-end data reporting UI that highlights information based on KPIs and a back-end data input UI for collecting project information from key project owners.
+						</div>
+					</div>
+					<div style='clearfix: both'></div>
+				</div>
+			</div>
+			<div id='map'>
+				<div id='logo-mini'>DK</div>
+				<div id='project-nav'>
+					<a href='#folio-1'><div class='project'>
+						<span class='project-name'>Information Monster</span>
+					</div></a>
+					<a href='#folio-2'><div class='project'>
+						<span class='project-name'>Company of Ateneo Dancers</span>
+					</div></a>
+					<a href='#folio-3'><div class='project'>
+						<span class='project-name'>Kaya Natin</span>
+					</div></a>
+					<a href='#folio-4'><div class='project'>
+						<span class='project-name'>Phoenix Transition Analytics</span>
+					</div></a>
+				</div>
+			</div>
+			<div id='prev'></div>
+			<div id='next'></div>
+		</div>
+	</body>
+	<script type='text/javascript' src='jquery-1.11.0.min.js'></script>
+	<script type='text/javascript'>
+		$(document).ready(function() {
+			if ($(document).scrollTop() != 0) {
+				// alert("what");
+			}
+		});
+
+		var currentPanel = 0;
+		var maxPanel = $("#folio .panel-container").length;
+		$("#next").click(function() {
+			if (currentPanel+2 <= maxPanel) $(document).scrollTop($("a[name*='folio-"+(currentPanel+2)+"']").offset().top);
+		});
+		$("#prev").click(function() {
+			if (currentPanel > 0) $(document).scrollTop($("a[name*='folio-"+(currentPanel)+"']").offset().top);
+			else if (currentPanel == 0) {
+				$(document).scrollTop(0);
+			}
+		});
+
+		$('#logo').click(function() {
+			// $('#cover').animate({top: '-100%'},300);
+			$(document).scrollTop($("html").outerHeight());
+		});
+
+		var pages = new Array('cover', 'folio-1', 'folio-2', 'folio-3', 'folio-4');
+		var pageIndex = 0; // Last Scroll Position
+		$(document).scroll(function() {
+			var scrollingPage = (Math.round($(document).scrollTop() / $("html").outerHeight())); // Current Scroll Position
+			if (pageIndex != scrollingPage) {
+				// console.log(scrollingPage);
+				if (scrollingPage > pageIndex) {
+					switch (scrollingPage-1) {
+						case 0:
+							// console.log("RemoveCover");
+							$('#cover').animate({top: '-100%'},300);
+							pageIndex = 1;
+							break;
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+							moveFolioNext();
+							pageIndex++;
+							break;
+					}
+
+				}
+				else if (scrollingPage < pageIndex) {
+					switch (scrollingPage) {
+						case 0:
+							// console.log("PlaceCover");
+							$('#cover').animate({top: '0'},300);
+							pageIndex = 0;
+							break;
+						case 1:
+						case 2:
+						case 3:
+						case 4:
+							moveFolioPrev();
+							pageIndex--;
+							break;
+					}
+
+				}
+				/*if (scrollingPage > pageIndex && pageIndex == 0 && scrollingPage == 1) {
+					$('#cover').animate({top: '-100%'},300);
+					pageIndex = 1;
+				}
+				else if (scrollingPage < pageIndex && pageIndex == 1 && scrollingPage == 0) {
+					console.log("here");
+					$('#cover').animate({top: '0'});
+					pageIndex = 0;
+				}*/
+			}
+			// console.log(($("a[name*='folio-4']").offset().top / $("html").outerHeight() )+1);
+			// console.log($(document).scrollTop());
+			// console.log($("a[name*='folio-1']").offset().top);
+			// console.log($("a[name*='folio-2']").offset().top);
+			// console.log($("a[name*='folio-3']").offset().top);
+			// console.log($("a[name*='folio-4']").offset().top);
+		});
+
+		$(".comments").click(function() {
+			$(this).fadeOut();
+		});
+		$(".work-badges .more").click(function() {
+			$(this).parent().parent().find(".comments").fadeIn();
+		});
+
+		function moveFolioNext() {
+			if (currentPanel+1 < maxPanel) {
+				$(".current").animate({left: '-100%', opacity: 0}, 200).removeClass("current").addClass("left");
+				$("#"+(currentPanel+1)).animate({left: '0', opacity: 1}).addClass("current");
+				currentPanel++;
+				$("#"+(currentPanel+1)).addClass("next");
+				$("#"+(currentPanel-1)).addClass("prev");
+			}
+
+		}
+		function moveFolioPrev() {
+			if (currentPanel-1 >= 0) {
+				$(".current").animate({left: '100%', opacity: 0}, 200).removeClass("current").addClass("right");
+				$("#"+(currentPanel-1)).animate({left: '0', opacity: 1}).addClass("current");
+				currentPanel--;
+				$("#"+(currentPanel+1)).addClass("next");
+				$("#"+(currentPanel-1)).addClass("prev");
+			}
+		}
+
+		/* SMOOTH SCROLL */
+
+		$(function() {
+		  $('a[href*=#]:not([href=#])').click(function() {
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		      var target = $(this.hash);
+		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		      if (target.length) {
+		        $('html,body').animate({
+		          scrollTop: target.offset().top
+		        }, 1000);
+		        return false;
+		      }
+		    }
+		  });
+		});
+	</script>
+</html>
