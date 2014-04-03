@@ -4,8 +4,10 @@
 	<head>
 		<title>DANIEL KRISTOFFER</title>
 	</head>
+	<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,900,700,600' rel='stylesheet' type='text/css'>
 	<link rel='stylesheet' type='text/css' href='reset.css'>
-	<link rel='stylesheet' type='text/css' href='default.css'>
+	<link rel='stylesheet' type='text/css' href='default.css'> 
+	<link rel="stylesheet" type="text/css" media="screen and (max-width: 768px)" href="css/mobile-480.css" />  
 		<script type='text/javascript'>
 			window.onload = function() {
 				window.scrollTo(0,0);
@@ -24,6 +26,7 @@
 			<div class='panel-container'>
 				<div id='logo'>LOGO</div>
 				<div id='my-name'>DANIEL KRISTOFFER</div>
+				<div id='swipe-up'>swipe up</div>
 			</div>
 		</div>
 		<div id='folio' class='panel'>
@@ -42,7 +45,7 @@
 							<div class='badge idea'></div>
 							<div class='more'></div>
 						</div>
-						<div class='comments'>
+						<div class='comments is-mobile'>
 							Client: Computer Society of the Ateneo
 							<br><br>
 							Information Monster is a web system that focuses on 3 key member related functionalities - (1) Registration, (2) Activity Tracking, and (3) Rewards and Achievements.
@@ -53,7 +56,7 @@
 					<div style='clearfix: both'></div>
 				</div>
 			</div>
-			<div id='1' class='panel-container next right'>
+			<div id='1' class='panel-container right'>
 				<div class='folio-title'>COMPANY OF ATENEO DANCERS</div>
 				<div class='content'>
 					<div class='left'>
@@ -66,7 +69,7 @@
 							<div class='badge dev'></div>
 							<div class='more'></div>
 						</div>
-						<div class='comments'>
+						<div class='comments is-mobile'>
 							Client: Company of Ateneo Dancers
 							<br><br>
 							The Company of Ateneo Dancers website is a site designed by the organization's creatives team. The site functions as an informative site but has a unique functionality - a booking system. Furthermore, the site tries to feature the on-going event/competition of the organization by incorporating these entries with Google Maps.
@@ -90,7 +93,7 @@
 							<div class='badge dev'></div>
 							<div class='more'></div>
 						</div>
-						<div class='comments'>
+						<div class='comments is-mobile'>
 							Client: Kaya Natin (via Works of Heart)
 							<br><br>
 							The Kaya Natin website is a website developed on behalf of Works of Heart. The site is built using Wordpress. Notable features include a header slider, a featured section and page/content categorization.
@@ -114,7 +117,7 @@
 							<div class='badge idea'></div>
 							<div class='more'></div>
 						</div>
-						<div class='comments'>
+						<div class='comments is-mobile'>
 							Client: Hewlett-Packard
 							<br><br>
 							PTA is an internal web system for our team in Hewlett-Packard. The system is similar to a Project Management System but incorporates key performance indicators based on the team where the system is being implemented. It shows a high level view of the different projects handled by the organization, status and key contacts.
@@ -146,13 +149,38 @@
 			<div id='next'></div>
 		</div>
 	</body>
-	<script type='text/javascript' src='jquery-1.11.0.min.js'></script>
+	<script type='text/javascript' src='lib/jquery-1.11.0.min.js'></script>
+	<script type='text/javascript' src='lib/jquery.touchSwipe.min.js'></script>
 	<script type='text/javascript'>
 		$(document).ready(function() {
-			if ($(document).scrollTop() != 0) {
-				// alert("what");
-			}
+			window.scrollTo(0,0);
 		});
+
+		/* GESTURES */
+
+		$("#cover").swipe({
+			swipe:function(event, direction, distance, duration, fingerCount) {
+				if (direction == "up") $(document).scrollTop($("a[name*='folio-1']").offset().top);
+			},
+			threshold: 30
+		});
+		$("#folio .panel-container").swipe({
+			swipe:function(event, direction, distance, duration, fingerCount) {
+				if (direction == "left") {
+					if (currentPanel+2 <= maxPanel) $(document).scrollTop($("a[name*='folio-"+(currentPanel+2)+"']").offset().top);
+				}
+				else if (direction == "right") {
+					if (currentPanel > 0) $(document).scrollTop($("a[name*='folio-"+(currentPanel)+"']").offset().top);
+					else if (currentPanel == 0) {
+						$(document).scrollTop(0);
+					}
+				}
+				else if (direction == "down") {
+					$(document).scrollTop(0);
+				}
+			},
+			threshold: 30
+		})
 
 		var currentPanel = 0;
 		var maxPanel = $("#folio .panel-container").length;
@@ -200,6 +228,8 @@
 							// console.log("PlaceCover");
 							$('#cover').animate({top: '0'},300);
 							pageIndex = 0;
+							$("#folio .panel-container").removeClass("left current next prev").addClass("right").removeAttr("style");
+							$("#folio #0").removeClass("right").addClass(" current");
 							break;
 						case 1:
 						case 2:
@@ -230,31 +260,43 @@
 		});
 
 		$(".comments").click(function() {
-			$(this).fadeOut();
+			// if ($(window).width() <= 768) $(this).fadeOut();
+			$(this).removeClass("open-in-mobile");
+			$("body").removeClass("stop-scroll");
 		});
 		$(".work-badges .more").click(function() {
-			$(this).parent().parent().find(".comments").fadeIn();
+			$(this).parent().parent().find(".comments").addClass("open-in-mobile");
+			$("body").addClass("stop-scroll");
 		});
 
 		function moveFolioNext() {
+
+			$(".comments").removeClass("open-in-mobile");
+			$("body").removeClass("stop-scroll");
 			if (currentPanel+1 < maxPanel) {
-				$(".current").animate({left: '-100%', opacity: 0}, 200).removeClass("current").addClass("left");
+				$(".current").animate({left: '-100%', opacity: 0}, 200).removeClass("current").removeClass("right").addClass("left");
 				$("#"+(currentPanel+1)).animate({left: '0', opacity: 1}).addClass("current");
 				currentPanel++;
-				$("#"+(currentPanel+1)).addClass("next");
-				$("#"+(currentPanel-1)).addClass("prev");
+				// $("#"+(currentPanel+1)).addClass("next");
+				// $("#"+(currentPanel-1)).addClass("prev");
 			}
 
 		}
 		function moveFolioPrev() {
 			if (currentPanel-1 >= 0) {
-				$(".current").animate({left: '100%', opacity: 0}, 200).removeClass("current").addClass("right");
+				$(".current").animate({left: '100%', opacity: 0}, 200).removeClass("current").removeClass("left").addClass("right");
 				$("#"+(currentPanel-1)).animate({left: '0', opacity: 1}).addClass("current");
 				currentPanel--;
-				$("#"+(currentPanel+1)).addClass("next");
-				$("#"+(currentPanel-1)).addClass("prev");
+				// $("#"+(currentPanel+1)).addClass("next");
+				// $("#"+(currentPanel-1)).addClass("prev");
 			}
 		}
+
+		$(window).resize(function() {
+			if ($(window).width() <= 768) {
+
+			}
+		});
 
 		/* SMOOTH SCROLL */
 

@@ -1,0 +1,52 @@
+body { overflow: hidden; }
+#swipe-up {
+	display: block;
+	font-size: 15pt;
+	width: 200px;
+	text-align: center;
+	position: absolute;
+	font-weight: 900;
+	bottom: 10%;
+	left: 50%;
+	margin-left: -100px;
+	padding-bottom: 30px;
+	background: url(../swipe_up.png) bottom center no-repeat; 
+	opacity: 0.3;
+	-webkit-animation: bounce 1.5s ease 0s infinite;
+	animation: bounce 1.5s ease 0s infinite; }
+#my-name { font-size: 26pt; }
+.badge { width: 48px; height: 48px; background: url(../badges_s.png) center no-repeat;	background-color: rgba(255,255,255,0.3); margin-right: 10px; }
+.badge.design { background-position: -1px 0; }
+.badge.dev { background-position: -51px 0; }
+.badge.idea { background-position: -101px 0; }
+.folio-title { font-size: 18pt; }
+.content .left { width: 100%; float: left; text-align: center; }
+.content .right { width: 100%; float: left; margin-top: 20px; }
+.work-badges { width: 90%; margin: 0 5%; text-align: center; }
+.work-badges .more { display: block; }
+.work-badges .more:hover { cursor: pointer; opacity: 0.7; }
+.comments { position: fixed; top: 10%; left: 0; width: 80%; padding: 20px 10%; margin: 0; background: #333; z-index: 999; font-size: 12pt; line-height: 20pt; }
+.comments.is-mobile { display: none; }
+.comments.open-in-mobile { display: block; }
+.comments:after { content:"";display: block; background: rgba(0,0,0,0.8); position: fixed; top: 0; left: 0; height: 100%; width: 100%; z-index: -1; }
+#project-nav .project { margin-left: 25px; width: 15px; height: 15px; }
+#project-nav .project .project-name { font-size: 10pt; left: -70px; }
+
+
+
+@-webkit-keyframes bounce {
+	0% { margin-bottom: 0px; }
+	60% { margin-bottom: 0px; }
+	75% { margin-bottom: -5px; }
+	88% { margin-bottom: 2px; }
+	95% { margin-bottom: 3px; }
+	100% { margin-bottom: 0px; }	
+}
+@keyframes bounce {
+	0% { margin-bottom: 0px; }
+	60% { margin-bottom: 0px; }
+	75% { margin-bottom: -5px; }
+	88% { margin-bottom: 2px; }
+	95% { margin-bottom: 3px; }
+	100% { margin-bottom: 0px; }	
+}
