@@ -286,11 +286,11 @@
 			$('#logo').click(function() {
 				$(document).scrollTop($("html").outerHeight());
 			});
-			$(".comments").click(function() {
+			$("#folio .panel-container .comments").click(function() {
 				$(this).removeClass("open-in-mobile");
 				$("body").removeClass("stop-scroll");
 			});
-			$(".work-badges .more").click(function() {
+			$("#folio .work-badges .more").click(function() {
 				$(this).parent().parent().find(".comments").addClass("open-in-mobile");
 				$("body").addClass("stop-scroll");
 			});
