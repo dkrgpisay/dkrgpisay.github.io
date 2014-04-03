@@ -164,13 +164,12 @@
 			},
 			threshold: 30
 		});
-		$("#folio .panel-container").swipe({
+		$(".work-badges .more").swipe({
 			tap:function(event, target) {
-				if ($(target) == $(".work-badges .more")){
-					$(target).parent().parent().find(".comments").addClass("open-in-mobile");
-					$("body").addClass("stop-scroll");
-				}
-			},
+				$(target).parent().parent().find(".comments").addClass("open-in-mobile");
+			}
+		});
+		$("#folio .panel-container").swipe({
 			swipe:function(event, direction, distance, duration, fingerCount) {
 				if (direction == "left") {
 					if (currentPanel+2 <= maxPanel) $(document).scrollTop($("a[name*='folio-"+(currentPanel+2)+"']").offset().top);
