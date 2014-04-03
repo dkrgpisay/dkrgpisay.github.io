@@ -191,6 +191,8 @@
 							$("#folio .panel-container").removeClass("left current next prev").addClass("right").removeAttr("style");
 							$("#folio #0").removeClass("right").addClass(" current");
 							currentPanel=0;
+
+							$(".open-in-mobile").removeClass("open-in-mobile");
 							break;
 						case 1:
 						case 2:
@@ -289,15 +291,14 @@
 			});
 
 			$('#logo').click(function() {
-				// $('#cover').animate({top: '-100%'},300);
 				$(document).scrollTop($("html").outerHeight());
 			});
 
 			$(".comments").click(function() {
-				// if ($(window).width() <= 768) $(this).fadeOut();
 				$(this).removeClass("open-in-mobile");
 				$("body").removeClass("stop-scroll");
 			});
+
 			$(".work-badges .more").click(function() {
 				$(this).parent().parent().find(".comments").addClass("open-in-mobile");
 				$("body").addClass("stop-scroll");
