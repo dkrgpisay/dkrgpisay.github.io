@@ -239,21 +239,18 @@
 
 		$(function() {
 		/* SMOOTH SCROLL */
-		  $('a[href*=#]:not([href=#])').click(function() {
-		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-		      var target = $(this.hash);
-		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-		      if (target.length) {
-		        $('html,body').animate({
-		          scrollTop: target.offset().top
-		        }, 1000);
-		        return false;
-		      }
-		    }
-		  });
-
-			/* GESTURES */
-
+			$('a[href*=#]:not([href=#])').click(function() {
+				if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+					var target = $(this.hash);
+					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+					if (target.length) {
+						$('html,body').animate({
+							scrollTop: target.offset().top
+						}, 1000);
+						return false;
+					}
+				}
+			});
 			$("#cover").swipe({
 				swipe:function(event, direction, distance, duration, fingerCount) {
 					if (direction == "up") $(document).scrollTop($("a[name*='folio-1']").offset().top);
@@ -277,9 +274,6 @@
 				},
 				threshold: 30,
 			});
-
-			/* CLICKS */
-
 			$("#next").click(function() {
 				if (currentPanel+2 <= maxPanel) $(document).scrollTop($("a[name*='folio-"+(currentPanel+2)+"']").offset().top);
 			});
@@ -289,16 +283,13 @@
 					$(document).scrollTop(0);
 				}
 			});
-
 			$('#logo').click(function() {
 				$(document).scrollTop($("html").outerHeight());
 			});
-
 			$(".comments").click(function() {
 				$(this).removeClass("open-in-mobile");
 				$("body").removeClass("stop-scroll");
 			});
-
 			$(".work-badges .more").click(function() {
 				$(this).parent().parent().find(".comments").addClass("open-in-mobile");
 				$("body").addClass("stop-scroll");
